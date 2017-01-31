@@ -1,6 +1,24 @@
+<div id="wrapper" class="active">
+    <!-- Sidebar -->
+            <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <div class="logo">
+          <img src='<%= image_url 'logo.png' %>' class="img-responsive center-block" alt="Logo">
+        </div>
+        <div id="sidebar_menu" class="sidebar-nav">
+           <div class="sidebar-brand text-center"><%= link_to("后台管理", admin_jobs_path) %></div>
+        </div>
+        <ul class="sidebar-nav " id="sidebar">
+          <li><%= link_to("首页", root_path, :class => "btn btn-info fa fa-home" ) %></li>
+          <li><%= link_to("新增岗位", new_admin_job_path, :class => "btn btn-success fa fa-plus" ) %></li>
+          <li><%= link_to("马上应征", jobs_path, :class => "btn btn-danger fa fa-handshake-o" ) %></li>
+          <li><%= link_to("登出", destroy_user_session_path, :class => "btn btn-warning fa fa-sign-out",method: :delete) %></li>
+        </ul>
+      </div>
 <h1> <%= @job.title %> </h1>
 
 <p>
   <%= simple_format(@job.description) %>
 
 </p>
+</div>
