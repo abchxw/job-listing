@@ -34,10 +34,16 @@
 }
 
 .jumbotron {
-  background-image:url('https://ww3.sinaimg.cn/large/006tKfTcjw1fc9qshsexjj30zk0nm79v.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-bottom: 110px;
+    background: url('https://ww2.sinaimg.cn/large/006tKfTcjw1fcevkaeu5zj30zk0npad3.jpg');
+    background-size: cover;
+    min-width: 250px;
+    height: 1280px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 0;
+    display: block;
+
 }
 
 .title {
@@ -48,6 +54,7 @@
   border-top-right-radius: 3px;//右上角圆边
   border-top-left-radius: 3px;//左上角圆边
 }
+
 .jumbotron h1, .jumbotron .h1 {
     text-align: left;//文字左对齐
     color: #999999;	//字体颜色
@@ -70,7 +77,7 @@
   margin-top: 10px;
   margin-bottom: 50px;
   text-align: center;
-  color: white;
+  color: #00ff00;
   top: 12px;
 }
 
@@ -368,7 +375,7 @@ body{
 
 .search-info-title {
   font-family: PingFangSC-Medium, Arial, Helvetica, sans-serif;
-  color: #0d6ded;
+  color: #e03900;
   font-size: 20px;
   text-align: center;
 }
