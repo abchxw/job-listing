@@ -17,6 +17,14 @@ Rails.application.routes.draw do
        resources :resumes
      end
   end
+  resources :jobs do
+    put :favorite, on: :member
+
+  end
+  resources :favorite do
+    
+  end
+
   resources :welcome do
 
   end

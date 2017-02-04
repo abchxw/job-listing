@@ -1,65 +1,3 @@
-<!--
-<div class="dropdown clearfix pull-right">
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      排序
-        <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
-        <li>
-          <%= link_to("按照薪资下限排序", jobs_path(:order => "by_lower_bound")) %>
-        </li>
-        <li>
-            <%= link_to("按照薪资上限排序", jobs_path(:order => "by_upper_bound")) %>
-
-        </li>
-        <li>
-          <%= link_to("按照发表时间排序", jobs_path ) %>
-
-        </li>
-    </ul>
-</div>
-<table class="table table-boldered">
-
-  <thead>
-        <tr>
-            <td>
-                职缺</td>
-            <td>薪资下限</td>
-            <td>薪资上限</td>
-            <td>刊登时间</td>
-        </tr>
-
-    </thead>
-  <% @jobs.each do |job| %>
-
-    <div class="row">
-    <div class="col-md-12 col-md-offset-10">
-     <% if current_user && current_user.is_favorite_of?(job) %>
-       <button type="button" class="btn btn-default btn-xs"><%= link_to('<span class="glyphicon glyphicon-star-empty"></span>取消收藏'.html_safe, favorite_job_path(job, type: "unfavorite"), method: :put) %></button>
-     <% else %>
-       <button type="button" class="btn btn-default btn-xs"><%= link_to('<span class="glyphicon glyphicon-star"></span>添加收藏'.html_safe, favorite_job_path(job, type: "favorite"), method: :put) %></button>
-     <% end %>
-   </div>
- </div>
-
-  <tr>
-
-    <td>
-      <%= link_to(job.title, job_path(job)) %>
-    </td>
-    <td>
-      <%= job.wage_lower_bound %>
-    </td>
-    <td>
-      <%= job.wage_upper_bound %>
-    </td>
-    <td>
-      <%= job.created_at.to_date %>
-    </td>
-  </tr>
-  <% end %>
-</table>
--->
 <div class="container-fluid">
   <div class="col-md-12 col-md-offset-1 col-lg-8 col-lg-offset-2">
     <div class="col-md-12">
@@ -124,9 +62,6 @@
     <% end %>
     </div>
   </div>
-</div>
-<div class="text-center">
-  <%= will_paginate @jobs,renderer: BootstrapPagination::Rails %>
 </div>
 
 </body>

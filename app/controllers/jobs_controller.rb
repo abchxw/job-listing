@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_filter :authenticate_user!, only: [:new,:create, :update, :edit, :destroy]
+  before_filter :authenticate_user!, only: [:new,:create, :update, :edit, :destroy, :favorite]
   before_action :validate_search_key, only: [:search]
 
   def show
@@ -14,11 +14,11 @@ class JobsController < ApplicationController
   def index
      @jobs = case params[:order]
      when 'by_lower_bound'
-       Job.published.order('wage_lower_bound DESC')
+       Job.published.order('wage_lower_bound DESC').paginate(:page => params[:page], :per_page => 6)
      when 'by_upper_bound'
-       Job.published.order('wage_upper_bound DESC')
+       Job.published.order('wage_upper_bound DESC').paginate(:page => params[:page], :per_page => 6)
      else
-        Job.published.recent.paginate(:page => params[:page], :per_page => 5)
+        Job.published.recent.paginate(:page => params[:page], :per_page => 6)
      end
   end
 
@@ -61,7 +61,23 @@ class JobsController < ApplicationController
   def search
     if @query_string.present?
       search_result = Job.published.ransack(@search_criteria).result(:distinct => true)
-      @jobs = search_result.paginate(:page => params[:page], :per_page => 5 )
+      @jobs = search_result.paginate(:page => params[:page], :per_page => 20 )
+    end
+  end
+
+  def favorite
+    @job = Job.find(params[:id])
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorite_jobs << @job
+      redirect_to :back
+
+    elsif type == "unfavorite"
+      current_user.favorite_jobs.delete(@job)
+      redirect_to :back
+
+    else
+      redirect_to :back
     end
   end
 

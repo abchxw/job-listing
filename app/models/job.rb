@@ -1,4 +1,7 @@
 class Job < ApplicationRecord
+  belongs_to :user
+  has_many :favorites
+  has_many :fans, through: :favorites, source: :user
   has_many :resumes
   validates :title, presence: true
   validates :wage_upper_bound, presence: true

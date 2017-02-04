@@ -35,7 +35,9 @@
                       <% if current_user.admin? %>
                         <li> <%= link_to("后台管理", admin_jobs_path, :class =>"btn fa fa-desktop") %></li>
                       <% end %>
-                        <li> <%= link_to("登出", destroy_user_session_path, :class =>"btn fa fa-sign-out", method: :delete) %> </li>
+                      <li><%= link_to(' 已收藏的工作', favorite_index_path, :class =>"btn fa fa-heart") %></li>
+
+                      <li> <%= link_to("登出", destroy_user_session_path, :class =>"btn fa fa-sign-out", method: :delete) %> </li>
                     </ul>
                   </li>
                 <% end %>
